@@ -20,7 +20,7 @@ export class InMemoryQuestionsRepository implements IQuestionsRepository {
       .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()) // newest to oldest: the most recent items (those with the latest createdAt timestamp) will appear first.
       .slice((page - 1) * 20, page * 20)
 
-      return questions
+    return questions
   }
   // ascendente: menor ---> maior ~ oldest to the newest | descendente: maior ---> menor ~ newest to the oldest
   /* valor negativo se o "b" for mais antigo que o "a" (indicando que o "a" deve vir primeiro)
