@@ -1,6 +1,5 @@
 import { Entity } from "../../../../core/entities/entity";
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id";
-import { Optional } from "../../../../core/types/optional";
 
 export interface CommentProps {
   authorId: UniqueEntityID
@@ -9,8 +8,8 @@ export interface CommentProps {
   updatedAt?: Date 
 }
 
-/* abstract class -> não pode ser instanciada diretamente (ex: new Comment()) | Comment.create() -> precisa ser estendida 
-por outra classe p/ ser instanciada */
+/* abstract class -> não pode ser instanciada diretamente (ex: new Comment()) | Comment.create() -> só pode ser instanciada
+as classes que herdam ela... */
 
 export abstract class Comment<Prop extends CommentProps> extends Entity<Prop> {
   get authorId() {
