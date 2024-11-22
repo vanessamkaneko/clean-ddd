@@ -2,15 +2,17 @@ import { error } from "console"
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id"
 import { Question } from "../../enterprise/entities/question.entity"
 import { IQuestionsRepository } from "../repositories/IQuestions.repository"
+import { Either, left, right } from "../../../../core/either"
+import { ResourceNotFoundError } from "./errors/resource-not-found-error"
 
 
 interface GetQuestionBySlugUseCaseRequest {
   slug: string
 }
 
-interface GetQuestionBySlugUseCaseResponse {
+type GetQuestionBySlugUseCaseResponse = Either<ResourceNotFoundError, {
   question: Question
-}
+}>
 
 
 export class GetQuestionBySlugUseCase {
@@ -22,9 +24,9 @@ export class GetQuestionBySlugUseCase {
     const question = await this.questionsRepository.findBySlug(slug)
 
     if (!question) {
-      throw new Error('Question not found.')
+      throw left(new ResourceNotFoundError())
     }
 
-    return { question }
+    return right ({ question })
   }
 }

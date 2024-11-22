@@ -2,6 +2,7 @@ import { makeAnswer } from "../../../../../test/factories/make-answer"
 import { makeAnswerComment } from "../../../../../test/factories/make-answer-comment"
 import { InMemoryAnswerCommentsRepository } from "../../../../../test/repositories/in-memory-answer-comments.repository"
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id"
+import { NotAllowedError } from "../../../../core/errors/not-allowed-error"
 import { DeleteAnswerCommentUseCase } from "./delete-answer-comment"
 
 let inMemoryAnswerCommentsRepository: InMemoryAnswerCommentsRepository
@@ -34,11 +35,12 @@ describe('Comment Answer Comment', () => {
 
     await inMemoryAnswerCommentsRepository.create(answerComment)
 
-    expect(() => {
-      return sut.execute({
-        answerCommentId: answerComment.id.toString(),
-        authorId: 'author-2'
-      })
-    }).rejects.toBeInstanceOf(Error)
+    const result = await sut.execute({
+      answerCommentId: answerComment.id.toString(),
+      authorId: 'author-2'
+    })
+
+    expect(result.isLeft()).toBe(true)
+    expect(result.value).toBeInstanceOf(NotAllowedError)
   })
 })
