@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 import { UniqueEntityID } from "../../src/core/entities/unique-entity-id";
-import { QuestionComment, QuestionCommentProps } from '../../src/domain/forum/enterprise/entities/question-comment';
+import { QuestionComment, QuestionCommentProps } from '../../src/domain/forum/enterprise/entities/question-comment.entity';
 
 export function makeQuestionComment(override: Partial<QuestionCommentProps> = {}, id?: UniqueEntityID) {
   const questionComment = QuestionComment.create({

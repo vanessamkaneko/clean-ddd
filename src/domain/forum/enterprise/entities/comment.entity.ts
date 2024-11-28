@@ -8,8 +8,9 @@ export interface CommentProps {
   updatedAt?: Date 
 }
 
-/* abstract class -> não pode ser instanciada diretamente (ex: new Comment()) | Comment.create() -> só pode ser instanciada
-as classes que herdam ela... */
+/* abstract class -> não pode ser instanciada diretamente (ex: new Comment()) | 
+QuestionComment.create() -> new QuestionComment() ... -> só pode ser instanciada as classes que herdam ela (que é o
+caso da QuestionComment)... */
 
 export abstract class Comment<Prop extends CommentProps> extends Entity<Prop> {
   get authorId() {

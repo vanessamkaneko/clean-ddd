@@ -1,7 +1,6 @@
 import { Either, left, right } from "../../../../core/either"
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id"
-import { QuestionComment } from "../../enterprise/entities/question-comment"
-import { Question } from "../../enterprise/entities/question.entity"
+import { QuestionComment } from "../../enterprise/entities/question-comment.entity"
 import { IQuestionCommentsRepository } from "../repositories/IQuestionComments.repository"
 import { IQuestionsRepository } from "../repositories/IQuestions.repository"
 import { ResourceNotFoundError } from "./errors/resource-not-found-error"

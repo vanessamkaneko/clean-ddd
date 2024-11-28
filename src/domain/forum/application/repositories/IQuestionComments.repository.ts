@@ -1,5 +1,5 @@
 import { PaginationParams } from "../../../../core/repositories/pagination-params";
-import { QuestionComment } from "../../enterprise/entities/question-comment";
+import { QuestionComment } from "../../enterprise/entities/question-comment.entity";
 
 export interface IQuestionCommentsRepository {
   findById(id: string): Promise<QuestionComment | null>
