@@ -46,6 +46,8 @@ export class DomainEvents {
     }
   }
 
+  // 1º param. -> qual função chamar qndo tal evento for disparado (qual função chamar p/ cadastrar um subscriber a partir do evento)
+  // 2º param. -> evento
   public static register(
     callback: DomainEventCallback,
     eventClassName: string,
